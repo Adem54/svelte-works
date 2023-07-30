@@ -1,7 +1,7 @@
 
 <script>
 //1.yontem
-export let productname, price, description;
+export let productname, price, description, seller;
 
 </script>
 
@@ -9,6 +9,7 @@ export let productname, price, description;
 	<h3>Productname:  {productname}</h3>
 	<h4>Price:   {price}</h4>
 	<p>Description:   {description}</p>
+	<p>Seller:   {seller}</p>
 </section>
 
 

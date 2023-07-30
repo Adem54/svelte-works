@@ -8,11 +8,13 @@
 	import Card from "./components/Card.svelte"
 	import Card2 from "./components/Card2.svelte"
 	import Card3 from "./components/Card3.svelte"
+	import MyInput from "./components/Input.svelte"
 
 	let card = {
 		productname:"Asus-PC",
 		price:3150,
-		description:"Very good standart"
+		description:"Very good standart",
+		seller:"John Tiger"
 	}
 </script>
 <!-- name, title main.js de degeri ataniyor ve buraya props olarak gonderilen javascript degiskenleridir ve html icerisinde suslu parantez icerisinde okunabiliyor!!!! 
@@ -28,6 +30,16 @@ Ayrica da props larin kullanildigi alt komponentlerde props lara default deger a
 6-Birde react taki gibi bizim illa ki hepsini ana bir html tagi(reacttaki jsx Fragment veya <></> bos taglar arasina aliyorduk 1 ana jsx return etmek zorunda idi) Iste bunu da svelte kendisi otomatik yaparak bize bu konu da da rahatlik veriyor. istedigmz gibi yanyana html taglari sibling seviyesinde kullanabiliyoruz
 export let name;
 export let title;
+
+7.Props lari aktarma isleminde sustainability-bærekraftig-surdurulebilirlik acisindan spread operatorunun kullaniriz.. 
+8. Bir event i calistirirken bu syntax i kullaniriz <button class="btn dec" on:click={onDecrease}>Decrease</button>	
+9. //Reactivity Kavrami 
+
+Simdi biz name i ve surnam i tamam bagladik ve orda olan degisikliklerimizi kullanicya gosterebilioruz ama, burda bind: kullanarak bunu yaptik, bu su anlama gelmiyor bizim name degiskenini kullanacagimz diger tum yerlerde bu degisikligin iletilecegi anlamina gelmiyor...O zaman bir problemimiz var, biz kullanicidan gelen degisikligi surekli olarak, uygulamada o degisikligi kullanmak istedigmz tum alanlarda gozukmesini isteriz...<input id="name" type="text" bind:value={name}>
+Asagidaki fullname e kullanicinin input alaninda yaptigi degisiklikler yansimiyor..yani name ve surname de biz degisikligi aliyoruz eyvallah, ama bizim bu degisiklikleri kullanicidan alma sebebimz tab i ki uygulamanin diger yerlerinde de kullanabilmek, yani biz degisiklikleri anlik olarak uygulamanin diger alnlarinda kullanamazsak o zaman zaten sadece bir an icin name-surnam ile almak cok da anlamli olmayacaktir...Peki biz bu islemi reactta nasil yapiyorduk, normal onchange event i uzerinden kullanici girdigi anda biz o degiskligi alip defatult olarak belirledigimz degiskenlerimzde kullaniyorduk!!! Yani onchange methodu icerisinde, kullanicinin interaktif oldugu alandan gleen degiskeni diger alanlar icin kullancagimiz degsken e event icersinde aktarark kullanici tarafindan yapilan son degisikligi surekli alabilmis olurduk...ama artik bunun icin event icerisinde  yazmamiza gerek kalmiyor svelte sayesinde..
+Sveltte ise bu islemi Reactivity kavrami ile halledecegiz...yani tabiri caizse, sen artik reaktif ol, kullanicidan gelen tum degiskligi artik senin de almani istiyorum diyerek biz ku llanicidan gelen degiskligi hangi alanlarda reactive olmasini yani aninda iletilmesini istiyorsak bu reactivty syntax ini kullaniriz!!! $:fullname = `${name} - ${surname}`; ve arttik bu islemimizden sonra, kullanicindan two-way bindings ile aldigmz degisiklikleri biz, uygulamamizin istedigmz alanlarinda kullanabiliriz...YANI BU SU DEMEK SEN SU ANDA EVET BIR NUMBER-INTEGER TYPE, VEYA STRING TYPE SIN, Y ANI VALUE TYPE SIN YANI IMMUTABLE SIN AMA, BEN SENIN REFERANSE TYPE GIBI DAVRANMANI, YANI MUTABLE DAVRANMANI ISTIYORUM DEMIS OLUYOR VE SVELTE REACTIVITY $: SYNTAX I ILE VALUE TYPE I REFERANS TYPE GIBI DAVRANMASI SAGLANMIS OLUYOR...
+Sadece degiskenler reactive olarak tanimlanmaz ayni zamanda if bloklari da reaktif olarak tanimlanabilir
+
 -->
 <!--
 <main>
@@ -53,6 +65,8 @@ desc = {card.description}
 />
 <hr>
 <Card3 {...card}/>
+<hr>
+<MyInput/>
 </main>
 <style>
 /*	main {

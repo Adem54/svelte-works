@@ -2,7 +2,7 @@
 <script>
 	//1.yontem
 	export let myCard;
- let { productname, price, description } = myCard;
+ let { productname, price, description, seller } = myCard;
 
 
 
@@ -12,6 +12,7 @@
 	<h3>Productname:  {productname}</h3>
 	<h4>Price:   {price}</h4>
 	<p>Description:   {description}</p>
+	<p>Seller:   {seller}</p>
 </section>
 
 

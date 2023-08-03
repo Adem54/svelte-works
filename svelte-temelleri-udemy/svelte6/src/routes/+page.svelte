@@ -5,9 +5,7 @@
 	import type { ProductType } from "$lib/store";
    import { card } from "$lib/store";
 
-
 //Bizim bir alisveris sepetimiz olacak ve sayfamizda urunlerimiz olacak, bu urunleri de tabi ki store iceriisnde tutacagiz, isteddimgz tum componentlerde kullanabilmek icin
-
 
 const addToCard = (id:any)=>
 {

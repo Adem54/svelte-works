@@ -2,7 +2,6 @@
 
 import { Writable, writable } from "svelte/store";
 
-
 let defaultProducts:ProductType[] = 
 [
 	{id:1, title:"bicycle", quantity:12, price:2400},
@@ -17,7 +16,6 @@ export type ProductType= {
 	quantity:number,
 	price:number
 }
-
 
 export const products:Writable<ProductType[]> = writable(defaultProducts);
 

@@ -85,6 +85,7 @@ const add = ()=>{
 PEKI BIZ VALUE YI  NASIL SUBSCRIBE ETMEDEN UPDATE EDEBILIRIZ???????????????? 
 $ ISARETI ILE STORE  U KULLANMAK...COOOK ONEMLI!!!
 
+import {count_val} from "./store";
 let count=0;
 count_val.subscribe((val)=>count=val)
 

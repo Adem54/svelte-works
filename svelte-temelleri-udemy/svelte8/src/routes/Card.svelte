@@ -1,4 +1,6 @@
 
+
+<!--icerisine aldigi children html element olur veya baska bir component oolur, onun render edilmesi gerektigini bildirmis oluyor aslinda ve de slotun kendi icinde belirtilen icerik ise asagidaki gibi This card element is empty bu icerik eger icerisinde slot olusturulan componentte children kullanilmaz ise o zaman kendi default icerini gosterecek, yok children kullanilirsa o zaman da zaten kullanilan children, slot un default icerigini override etmis olacak ve biz sadece icinde slot kullanilan, componentte kullanilan children html ini ya da componentini gorecegiz-->
 <div class="card">
 	<slot>
 		This card element is empty!

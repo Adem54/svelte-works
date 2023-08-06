@@ -4,9 +4,6 @@
    import { json } from "@sveltejs/kit";
 import { onMount } from "svelte";
 
-
-
-
 	//https://jsonplaceholder.typicode.com/users
 	let users:any=[];
 	let isLoading = true;
@@ -20,12 +17,17 @@ import { onMount } from "svelte";
 		setTimeout(()=>{
 			return resolve("The post data is fetched");
 		}, 1000)
-	})
-
-//Bu sekilde then bloklari kullanarak, datayi cekip sonra bu datayi , direk html icerisinde svelte in bize sunmus oldugu imkanlar dahilinde yapiyoruz
+	}) 
+	/*onMount icerisinde fetch islemini yapmak zaten manuel islemimizdir, yani onMount
+	 svelte icersinden gelen bir ozelliktir,ama zaten bu fetch islemi ilk oalrak bu sekilde bu mantkla
+	 bircok yerde zaten yapilabiliyor...
+	Ama, biz asagida direk svelte den gelen await ile de yonetebiliyoruz bu islemi!!!!
+		*/
+/*Bu sekilde then bloklari kullanarak, datayi cekip sonra bu datayi ,
+ direk html icerisinde svelte in bize sunmus oldugu imkanlar dahilinde yapiyoruz
+ */
 	const fetchData =()=> fetch(endpointUrl).then(res=>res.json()).catch(e=>console.error(e));
 	
-
 	const fetchData2 = async () => {
     try {
       const response = await fetch(endpointUrl);
@@ -41,7 +43,9 @@ import { onMount } from "svelte";
 
 </script>
 
-<!--loading in hanlde edilmesini burda manuel olarak , sveltten bagimsiz olarak yaptik, ama svelte in bize sundugu imkan sayesinde bunu yapmamiza gerek yok!!!Asagidaki orneklerde direk svelte kendisi bunu hallediyor bizim icin!!!!!-->
+<!--loading in hanlde edilmesini burda manuel olarak , sveltten bagimsiz olarak yaptik, 
+ama svelte in bize sundugu imkan sayesinde bunu yapmamiza gerek yok!!!Asagidaki orneklerde direk 
+svelte kendisi bunu hallediyor bizim icin!!!!!-->
 <h1 style="color:tomato;">{isLoading ? "My data is loading!!!!!!!!!!" : ""}</h1>
 <hr>
 
@@ -57,7 +61,10 @@ import { onMount } from "svelte";
 
 <hr>
 
-<!--EGer hicbir zaman reject edilmeyecek bir request imiz var ise o zaman onu da asagiki gibi kullanabiliriz!!!!Ama loading handle yok bu kullanimda , eger data gelene kadar hibrisey gozukmesin dersek, bu sekilde de kullanabilioruz asenkron islemlerimzi-->
+<!--EGer hicbir zaman reject edilmeyecek bir request imiz var ise o zaman onu 
+	da asagiki gibi kullanabiliriz!!!!Ama loading handle yok bu kullanimda ,
+	 eger data gelene kadar hibrisey gozukmesin dersek, 
+	 bu sekilde de kullanabilioruz asenkron islemlerimzi-->
 
 {#await getPosts then value}
 <p>
@@ -71,7 +78,10 @@ import { onMount } from "svelte";
 
 	<h2>Loading data...</h2>
 {:then data } 
-<h1>HEADER PART</h1><!--Eger istersekki. html icindeki diger alanlarda ,fetch edilen data geldikten sonra gozuksun o zaman da o sekil de olmasini istedgmiz alanlari da header-footer gibi alanlari da biz, svelte in bize saglamis oldugu await kismindaki data nin geldigi zaman calisacak kisimda kullanabiliriz!!!!!-->
+<h1>HEADER PART</h1><!--Eger istersekki. html icindeki diger alanlarda ,
+	fetch edilen data geldikten sonra gozuksun o zaman da o sekil de olmasini istedgmiz alanlari 
+	da header-footer gibi alanlari da biz, svelte in bize saglamis oldugu await kismindaki
+	 data nin geldigi zaman calisacak kisimda kullanabiliriz!!!!!-->
 	{#each data as item, index(item.id) }
 		<span style="color:blue; font-weight:bold; font-size:1.4rem; display:block;">{item.name} -- {item.email}</span>
 	{/each}
@@ -80,9 +90,7 @@ import { onMount } from "svelte";
 	<h2>Something went wrong!</h2>	
 {/await}
 
-
 <hr>
-
 {#await promiseData}
   <h2>Loading data...</h2>
 {:then data}

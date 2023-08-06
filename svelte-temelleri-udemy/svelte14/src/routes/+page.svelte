@@ -6,12 +6,16 @@
 	//fetch-axios ile bir api-service ye istek gonderrdigmzde bunlar bize promise donuyorlar dolayisi ile de promise resolve olursa than blogu, reject olursa catch blogu calisiyor!!
 
    import AwaitBlock from "./AwaitBlock.svelte";
+   import GetData from "./GetData.svelte";
    import Pokemon from "./Pokemon.svelte";
 
 </script>
 
 <AwaitBlock/>
 <hr>
-<Pokemon/>
+<!-- <Pokemon/> -->
+<hr>
+
+<GetData/>
 
 

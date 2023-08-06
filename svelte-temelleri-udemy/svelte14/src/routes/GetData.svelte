@@ -4,9 +4,13 @@
 import request, {post,get} from "./request";
 import {getPosts, addPost} from "../services/myposts";
 
+<<<<<<< HEAD
 /*Bunu get i direk bu sekilde de svelte te yazdirmak icin kullanabilecegimzi gosterdik ama
  biz asil islemlerimizi, myposts icinde hazirladik ordaki bizim son, durum kodlarimiz. 
 */
+=======
+
+>>>>>>> 8382b31d499b82bef99b4f8ced1ac221936ec335
 let promise = get("https://jsonplaceholder.typicode.com/posts");
 </script>
 {#await promise }

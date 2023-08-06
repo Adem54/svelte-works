@@ -47,8 +47,23 @@
 	{
 		console.log(`count-value is : ${count}`);
 	}
+
+	const users = [
+		{id:1,name:"Adem", surname:"Erbas"},
+		{id:2,name:"Adem", surname:"Erbas"},
+		{id:3,name:"Adem", surname:"Erbas"},
+		{id:4,name:"Adem", surname:"Erbas"},
+	]
 </script>
 <h1>{count == 5 ? ("COUNT IS "+count) : "" }</h1>
+
+{#if count === 10}
+	<h2>{count} times clicked 1.level..</h2>
+{:else if count === 15}
+<h2>{count} times clicked 2.level..</h2>
+{:else}
+<h2>{count} times clicked default....</h2>
+{/if}
 <button on:click={handleClick}>You clicked the button {count} time!</button>
 <h3>{myCount}</h3>
 <h3>{myCount2}</h3>

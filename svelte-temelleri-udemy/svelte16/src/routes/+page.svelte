@@ -1,5 +1,7 @@
 
-<script>
+<script lang="ts">
+   import Todos from "./Todos.svelte";
+
 	//Event modifiers
 	/*Bir eventin sadece 1 kez calismasini istedgmiz durumlarda kullanabiliriz
 	Ya da <div><button></button></div> buton icerisine ve div icerisine onclick atadik, 
@@ -60,6 +62,9 @@
 	const handleClickDiv = ()=>{
 		console.log("Clicked to Div");
 	}
+
+
+	
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -72,7 +77,7 @@
 			MYCLICKBUTTON2	<span>ClickBtn2</span>
 	</button>
 </div>
-<br><br>
+<br>
 <hr>
 <!--Bu sekilde onclick-eventini 1 kez calisitirilmasini saglariz-->
 <form action="" on:submit|preventDefault={handleSubmit}>
@@ -80,3 +85,5 @@
 	<input type="text">
 	<button type="submit">Submit</button>
 </form>
+<hr>
+<Todos />

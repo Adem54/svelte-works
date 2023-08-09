@@ -5,7 +5,6 @@ let todos:any = [
 		{id:2, done: false, text: 'build an app' },
 		{id:3, done: false, text: 'world domination' }
 	];
-
 	/*
 	$: HARIKA BESTPRACTISE...
 	Biz, ozellikle bazen, bir dizi icerisinde dondururken, kullanicidan bir id aliyoruz ve istiyoruz ki 
@@ -17,12 +16,17 @@ let todos:any = [
 
 	//Dikkat edelim, console da degisiklik gormek istersek bu sekilde gorebiliriz..
 	$:{
-	console.log("todos:", todos);
-	console.log("myTodos: ", myTodos);
-}
+		console.log("todos:", todos);
+		console.log("myTodos: ", myTodos);
+   }
+
+//HARIKA BESTPRACTISE!!!!!!-BUNU IYI OGRENELEIM!!
 //Iste bu sekilde , todos icerisindeki degisikligi alarak, erismek istedigmz data ya bu sekilde 
 //eriserek, bu islemleri gidip de, html icerisinde yapmamiza gerek kalmiyor!!!
-$:remaining = todos.filter((todo:any)=>!todo.done)
+//Biz, uygulama icerisinde kullanicinin sectigi yeni degere gore her seferinde id sin gore 
+//hangi elementler secili ise onu bulmak icin, gidip html icinde bu sekilde yapmamiza gerek birakmiyor bu islem 
+//Bundan dolayi bu kullanima cook fazla ihtiyacimiz olacak!!!!
+$:remaining = todos.filter((todo:any)=>!todo.done).length;
 
 const handleAddTodo = (event:Event)=>
 {
@@ -57,7 +61,7 @@ const handleClearCompleted = (event:Event)=>{
 	</div>
 {/each}
 
-<p>Number of remaining todo: {remaining.length}</p>
+<p>Number of remaining todo: {remaining}</p>
 
 <button class="btn-add" on:click={handleAddTodo}>Add new</button>
 <button class="btn-clear" on:click={handleClearCompleted}>Clear completed</button>

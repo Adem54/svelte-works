@@ -3,6 +3,7 @@
 <script lang="ts">
    import Input from "./Input.svelte";
    import Input2 from "./Input2.svelte";
+   import MedieElementsBind from "./MedieElementsBind.svelte";
 	let val="Adem";
 	let inputField:any; 
 	$:{
@@ -61,3 +62,6 @@ $:if(input_field)
 <button  on:click={(e)=>handleFocus(e)}>Focus Input</button>
 <button  on:click={(e)=>handleFocus2(e)}>Focus Input2</button>
 
+<hr>
+
+<MedieElementsBind/>

@@ -1,21 +1,24 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit'
 
+	//burda export edilen props icindeki title degerini alttaki svelte componentinden alabiliyruz... yine property name title olarak 
 	export const load: Load = ({ error, status }) => {
 		return {
 			props: {
-				title: `${status}: ${error.message}`,
+				error, status
 			},
 		}
 	}
 </script>
 
 <script lang="ts">
-	export let title: string
+	export let status: string="stat";
+	export let error: string="err";
 </script>
 
 <div class="error">
-	<h1>{title}</h1>
+	<h1>{status}</h1>
+	<h1>{error}</h1>
 	<h2>Error!!!</h2>
 	<img src="/error.webp" alt="Surprised cat" />
 </div>

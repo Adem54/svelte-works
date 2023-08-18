@@ -1,5 +1,5 @@
 <script>
-	
+
 	import '../app.css';
 
 </script>
@@ -56,6 +56,7 @@ UNMOUNT OLMUS OLACAKTIR
 
 <style>
 	footer{
+		margin-top:5rem;
 		background-color: #000;
 		height: 3rem;
 		width:100vw;

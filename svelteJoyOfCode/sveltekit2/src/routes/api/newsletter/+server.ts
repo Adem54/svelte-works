@@ -47,24 +47,34 @@ export const GET:RequestHandler = async (event) =>
 
 export const POST:RequestHandler = async (event:any)=>
 {
-	console.log("event: ", event);
+	//console.log("event: ", event);
 	//event:cookies,fetch,getClientAddress,locals,params,patlform,request,url,route,setHeaders alt objeler vardir 
 	//Ve bu objeler araciligi ile gelen request ile ilgili her turlu detaya erisebiliriz 
 	//url-araciligi ile de yine javascriptin url-methodlari ile url-icindeki her turlu dataya da erisebiliriz
 	//Burasi post-request ve bize form-dan ddata gelecek artik burda
-	const data = await event.request.formData();
+	//const data = await event.request.formData();
+	
+	const data2 = await event.request.json();
+	console.log("data2: ", data2);
 	//formData nin nasil kullanildigini yine, mdn den ogrenebilirz 
 	//Form dan gonderilen data nin name i ne ise o name uzerinden o alana girilen degeri asagidaki gibi alabilirz
-	const email = data.get("email");
-	console.log("email: ",email);
-
+//	const email = data.get("email");
+	console.log("email: ",data2);
+	const body =JSON.stringify({data2,success:true});
+	const options = {
+		headers:{
+			"Content-Type":"Application/JSON"
+				}
+	};
 	//subscribe the user to the newsletter
 	return new Response(
-		JSON.stringify({email,success:true}),
-		{
-			headers:{
-				"Content-Type":"application/json"
-					}
-		}
+		body,
+		options
 	)
 }
+/*
+Bu yontem sayesinde bizim surekli olarak bir server in calismtirmamizdan ziyade, biz 
+bu sekilde endpointlerimzi ayiararak, istek hangisine gelirse o zaman o endpointin cevap vermesini 
+sagliyoruz ve de bu sekilde task lari da ayirmis oluyoruz, bir kere de 1 endpoint calistirilmis olyor
+bu sekilde
+*/

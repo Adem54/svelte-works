@@ -15,7 +15,7 @@ export const GET:RequestHandler = async (event:any)=>{
 	//setHeaders lari endpoint icin ve page-clientside icin set edebiliriz ve return olarak da setHeaders donuyor
 	const data = await getPosts();
 	//let data2 = await getRandomData();
-	console.log("dataAAA: ",data);
+	// console.log("dataAAA: ",data);
 
 	//Headerslarimzi spesifiklestirebiliyoruz event.setHeaders araciligi ile -BESTPRACTISE
 	event.setHeaders({
